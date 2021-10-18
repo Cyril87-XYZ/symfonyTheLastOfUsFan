@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TLUFrontController!{% endblock %}
+
+{% block body %}
+    <h1>{{ article.categorie.nom }}</h1>
+ <h3 style="color: red; padding-bottom: 5%; text-decoration: underline">Attention, certain article peut contenir du Spoil !</h3>
+   <article>
+       <h1 style="text-align: center; font-weight: bold; color: rebeccapurple ; margin-bottom: 5%">{{ article.title}} </h1>
+       <div class="metadata" style="text-align: center">Ecrit le {{ article.createAt | date('d/m/Y') }} à {{article.createAt | date('H:i')  }} dans la catégorie {{ article.categorie.nom }}</div>
+       <div class="content">
+           <img src="{{ asset(article.image) | imagine_filter('logo') }}" style="margin-left: 35%; width: 30%; margin-bottom: 5%" alt>
+
+           <p>
+              {{ article.content | raw}}
+           </p>
+           <p>
+           {% for tag in article.tags %}
+                <h5  style="color: {{ tag.couleur }}">#{{ tag.nom }}</h5>
+           {% endfor %}
+           </p>
+{#           <p>#}
+{#                <a href="/article1" class="btn btn-primary">Revenir à la liste des articles</a>#}
+{#           </p>#}
+       </div>
+ </article>
+{% endblock %}

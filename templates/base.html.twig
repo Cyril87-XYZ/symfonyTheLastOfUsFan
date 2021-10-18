@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            <link href="{{ asset('Asset/style.css') }}" type="text/css" rel="stylesheet" />
+            <link rel="stylesheet" href="https://bootswatch.com/5/solar/bootstrap.min.css">
+            <link rel="icon" href="https://ae01.alicdn.com/kf/HTB16Ir0qfiSBuNkSnhJq6zDcpXax/Autocollant-en-vinyle-le-dernier-des-tats-unis-autocollant-dr-le-de-pare-choc-de-voiture.jpg" />
+        {% endblock %}
+
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
+    </head>
+    <body>
+{#       <main>#}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <img src="https://mesgoodies.net/15221-thickbox_default/shirt-the-last-of-us-symbole-luciole-et-sang-blanc-pour-homme-et-femme.jpg " width="3%" >
+{#                <a class="navbar-brand" href="#">Navbar</a>#}
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/" >Home
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" >Article</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/listeCatégorieArticle">Toutes les catégories d'articles</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/catégorieArticle1">Personages/Doubleur</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/catégorieArticle2">Histoire/Univers</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/catégorieArticle3">Gameplay/Système de jeu</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/catégorieArticle4">Récompence/Critique</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/catégorieArticle5">A propos de/News</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/catégorieArticle6">Jeux similaire/Produit dérivé</a>
+                                </div>
+                        </li>
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Vidéo</a>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/listeCatégorieVideo">Toutes les catégories de vidéo</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="/catégorieVidéo1">Vidéo Funny</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item"  href="/catégorieVidéo2">Musique</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item"  href="/catégorieVidéo3">Découverte et jeux en entier</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item"  href="/catégorieVidéo4">Kill/Gameplay</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/tag1" >Tag</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="/categorie1" >Catégorie</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/search" >Recherche par Tag</a>
+                        </li>
+
+
+                        {% if app.user and is_granted("ROLE_ADMIN") %}
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Option admin</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/article">Liste article</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/categorie">Liste categorie</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item"  href="/video">Liste video</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item"  href="/tag">Liste Tags</a>
+                                </div>
+                            </li>
+                        {% endif %}
+
+                        {% if app.user and is_granted("ROLE_SUPER_ADMIN") %}
+                            <li class="nav-item dropdown" >
+                                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Option super admin</a>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="/user">Liste utilsateur</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item"  href="/super_admin/contact">Liste Contact</a>
+                                </div>
+                            </li>
+                        {% endif %}
+                    </ul>
+
+                    <ul class="navbar-nav flex-row justify-content-between ml-auto">
+                        {% if app.user %}
+                        <li class="nav-item active">
+                            <a class="nav-link">{{ app.user.pseudo }}</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="/logout"> Se déconnecter</a>
+                        </li>
+                        {% else %}
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/login">Se connecter
+                                </a>
+                            </li>
+                            <li class="nav-item active ">
+                                <a class="nav-link" href="/register">S'inscrire
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success" style="text-align: center">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="container">
+        {% block body %}
+        {% endblock %}
+        </div>
+{#       </main>#}
+        <footer class="text-center " style="background-color: #073642">
+            <div class="container p-2">
+                <a class="text-light" href="{{ path('legal') }}" style="margin-right: 5%">Mentions Légales</a>
+                <img src="https://ae01.alicdn.com/kf/HTB1YARjyHGYBuNjy0Foq6AiBFXar/Autocollant-en-vinyle-le-dernier-des-tats-unis-autocollant-dr-le-de-pare-choc-de-voiture.jpg_640x640.jpg" alt="Logo wow" style="width: 3%">
+                <a class="text-light" href="{{ path('contact') }}" style="margin-left: 5%"> Nous Contacter</a>
+
+             </div>
+        </footer>
+    </body>
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+{#    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>#}
+
+
+
+</html>

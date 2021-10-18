@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article index{% endblock %}
+
+{% block body %}
+    <h1>Article index</h1>
+
+    <table class="table">
+        <thead style="color: #8B6DF6">
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Contenu</th>
+                <th>Image</th>
+                <th>Créer le</th>
+                <th>Categorie</th>
+                <th>Tags</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        {% for article in articles %}
+        <thead style="color: white">
+            <tr>
+                <td>{{ article.id }}</td>
+                <td>{{ article.title }}</td>
+                <td>{{ article.content | slice(0,50) }}</td>
+                <td>{{ article.image | slice(0,50) }}</td>
+                <td>{{ article.createAt ? article.createAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ article.categorie.nom }}</td>
+                <td>
+                {% for tag in article.tags %}
+                    <h5  style="color: {{ tag.couleur }}">{{ tag.nom }}</h5>
+                {% endfor %}
+                </td>
+                <td>
+                    <a href="{{ path('article_show', {'id': article.id}) }}" >Voir</a>
+                    <p></p>
+                    <a href="{{ path('article_edit', {'id': article.id}) }}" >Editer</a>
+                </td>
+            </tr>
+
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+            </thead>
+        {% endfor %}
+
+
+    </table>
+
+    <a href="{{ path('article_new') }} "  class="btn btn-primary">Créer un nouveau article</a>
+{% endblock %}

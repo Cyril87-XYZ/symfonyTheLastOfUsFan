@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste Utilisateur{% endblock %}
+
+{% block body %}
+    <h1>Liste Utilisateur</h1>
+
+    <table class="table">
+        <thead style="color: #8B6DF6">
+            <tr>
+                <th>Pseudo</th>
+                <th>Email</th>
+                <th>Roles</th>
+                <th>IsVerified</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        {% for user in users %}
+        <thead style="color: white">
+            <tr>
+                <td>{{ user.pseudo }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+                <td>{{ user.isVerified ? 'Oui' : 'Non' }}</td>
+                <td>
+                    <a href="{{ path('user_show', {'id': user.id}) }}">Voir</a>
+                    <a href="{{ path('user_edit', {'id': user.id}) }}">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">Aucun utilisateur trouvé </td>
+            </tr>
+            </thead>
+        {% endfor %}
+    </table>
+
+    <a href="{{ path('user_new') }}" class="btn btn-primary">Créer un nouveau utilisateur</a>
+{% endblock %}

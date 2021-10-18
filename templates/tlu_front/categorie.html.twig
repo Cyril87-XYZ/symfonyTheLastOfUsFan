@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TLUFrontController!{% endblock %}
+
+{% block body %}
+    <section class="categorie">
+        <p style="margin-bottom: 5%"></p>
+        <table class="table">
+            <thead style="color: #8B6DF6">
+            <tr>
+                <th>Nom</th>
+                <th>Numéro de la Catégorie</th>
+            </tr>
+            </thead>
+            {% for categorie in categorie %}
+                <thead style="color: white">
+                <tr>
+                    <td>{{ categorie.nom }}</td>
+                    <td>{{ categorie.numeroCategorie }}</td>
+                </tr>
+                </thead>
+            {% endfor %}
+        </table>
+    </section>
+{% endblock %}

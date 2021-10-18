@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tag{% endblock %}
+
+{% block body %}
+    <h1>Tag</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ tag.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td style="color: {{ tag.couleur }}">{{ tag.nom }}</td>
+            </tr>
+            <tr>
+                <th>Couleur</th>
+                <td>{{ tag.couleur }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('tag_index') }}" class="btn btn-primary">Retour à la liste des Tags</a>
+
+    <a href="{{ path('tag_edit', {'id': tag.id}) }}" class="btn btn-primary" style="background-color: #8B6DF6; color: white; margin-bottom: 20px; margin-top: 20px">Modifier</a>
+
+    {{ include('tag/_delete_form.html.twig') }}
+{% endblock %}

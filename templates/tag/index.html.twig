@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tag index{% endblock %}
+
+{% block body %}
+    <h1>Tag index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Couleur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        {% for tag in tags %}
+        <thead style="color: #8B6DF6">
+            <tr>
+                <td>{{ tag.id }}</td>
+                <td style="color: {{ tag.couleur }}">{{ tag.nom }}</td>
+                <td style="color: {{ tag.couleur }}">{{ tag.couleur }}</td>
+                <td>
+                    <a href="{{ path('tag_show', {'id': tag.id}) }}">Voir</a>
+                    <a href="{{ path('tag_edit', {'id': tag.id}) }}">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+            </thead>
+        {% endfor %}
+
+    </table>
+
+    <a href="{{ path('tag_new') }}"  class="btn btn-primary">Créer un nouveau tag</a>
+{% endblock %}

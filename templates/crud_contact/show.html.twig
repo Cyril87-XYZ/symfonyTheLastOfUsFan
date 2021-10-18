@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact{% endblock %}
+
+{% block body %}
+    <h1>Contact</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ contact.id }}</td>
+            </tr>
+            <tr>
+                <th>Pseudo</th>
+                <td>{{ contact.pseudo }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ contact.email }}</td>
+            </tr>
+            <tr>
+                <th>Sujet</th>
+                <td>{{ contact.sujet }}</td>
+            </tr>
+            <tr>
+                <th>Envoyer le</th>
+                <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Message</th>
+                <td>{{ contact.message }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('c_r_u_d_contact_index') }}"class="btn btn-primary">Retour à la liste des contacts</a>
+
+{#    <a href="{{ path('c_r_u_d_contact_edit', {'id': contact.id}) }}"class="btn btn-primary"style="background-color: #8B6DF6; color: white; margin-bottom: 20px; margin-top: 20px">Modifier</a>#}
+
+    {{ include('crud_contact/_delete_form.html.twig') }}
+{% endblock %}

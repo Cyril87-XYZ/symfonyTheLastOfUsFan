@@ -1,0 +1,47 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block title %}Hello TLUFrontController!{% endblock %}#}
+
+{#{% block body %}#}
+{#    <section class="video">#}
+{#    {% for video in video %}#}
+{#        <article>#}
+{#            <h1 style="text-align: center; font-weight: bold; color: rebeccapurple ; margin-bottom: 5%">{{ video.titre }}</h1>#}
+{#            <div class="content" style="display: flex; align-items: center; flex-direction: column">#}
+{#                <iframe  width="675" height="506" src="{{ video.lien }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>#}
+{#                <p>#}
+{#                {{  video.description | slice(0, 376) | raw}} ...#}
+{#                </p>#}
+{#                {% for tag in video.tags %}#}
+{#                    <h5  style="color: {{ tag.couleur }}; text-align: center">{{ tag.nom }}</h5>#}
+{#                {% endfor %}#}
+{#                </p>#}
+
+{#                <a href="{{ path('montreVideo',{'id': video.id})}}" class="btn btn-primary" style="margin-bottom: 5%" >Lire la suite</a>#}
+
+{#            </div>#}
+{#        </article>#}
+{#    {% endfor %}#}
+{#    </section>#}
+{#{% endblock %}#}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Legendes{% endblock %}
+
+{% block body %}
+{#    <h1 style="text-align: center; font-weight: bold; color: rebeccapurple ; margin-bottom: 5%">{{ video.categorie.titre }}</h1>#}
+
+    <article class="mesLegendes">
+        {% for video in video %}
+            <div class="legende">
+                <h2 style="margin-top: 5%">{{ video.titre }}</h2>
+                <iframe   width="475" height="306" src="{{ video.lien }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{#                <a href="{{ path('montreArticle',{'id': article.id}) }}" class="monMargin"><img src="{{ article.image }}" alt="" width="300px"></a>#}
+                <a href="{{ path('montreVideo',{'id': video.id})}}" class="btn btn-primary" style="margin-bottom: 5%" >Lire la suite</a>
+            </div>
+        {% endfor %}
+    </article>
+
+
+{% endblock %}

@@ -1,0 +1,64 @@
+{#{% extends 'base.html.twig' %}#}
+
+{#{% block title %}Hello TLUFrontController!{% endblock %}#}
+
+{#{% block body %}#}
+{#    <section class="articl">#}
+{#    {% for article in article %}#}
+{#        <p style="margin-bottom: 5%"></p>#}
+{#        <article class="article">#}
+{#            <h1 style="text-align: center; font-weight: bold; color: rebeccapurple ; margin-bottom: 3%">{{ article.title}} </h1>#}
+{#            <div class="metadata" style="text-align: center">Ecrit le {{ article.createAt | date('d/m/Y') }} à {{article.createAt | date('H:i')  }} dans la catégorie {{ article.categorie.nom }}</div>#}
+{#            <div class="content" style="display: flex; align-items: center; flex-direction: column">#}
+{#                <img src="{{ article.image }}" alt="" style=" margin-bottom: 3%">#}
+{#                <p>#}
+{#                {{ article.content | slice(0, 376) | raw}} ...#}
+{#                </p>#}
+{#                <p>#}
+{#                {% for tag in article.tags %}#}
+{#                        <h5  style="color: {{ tag.couleur }}; text-align: center">{{ tag.nom }}</h5>#}
+{#                {% endfor %}#}
+{#                </p>#}
+{#                <p style="margin-bottom: 3%"></p>#}
+{#                <a href="{{ path('montreArticle',{'id': article.id})}}" class="btn btn-primary"  >Lire la suite</a>#}
+{#                <p style="margin-bottom: 5%"></p>#}
+{#                <hr style="border-bottom:  solid 2px violet">#}
+{#                <p></p>#}
+{#            </div>#}
+{#        </article>#}
+{#   {% endfor %}#}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Legendes{% endblock %}
+
+{% block body %}
+
+
+    <article class="mesLegendes">
+
+        {% for article in article %}
+{#            <h1>{{ article.categorie.nom }}</h1>#}
+            <div class="legende">
+{#                <h1>{{ article.categorie.nom }}</h1>#}
+                <h2 style="margin-top: 5%">{{ article.title }}</h2>
+                <div class="metadata" style="text-align: center">Ecrit le {{ article.createAt | date('d/m/Y') }} à {{article.createAt | date('H:i')  }}</div>
+
+                <a href="{{ path('montreArticle',{'id': article.id}) }}" class="monMargin"><img src="{{ asset(article.image) | imagine_filter('logo') }}" /></a>
+            </div>
+        {% endfor %}
+    </article>
+
+
+{% endblock %}
+
+{#        <article>#}
+{#            <h2>Titre de l'article</h2>#}
+{#            <div class="metadata">Ecrit le 10/05/18 à 19:00 dans la catégorie Personnage</div>#}
+{#            <div class="content">#}
+{#                <img src="http://placehold.it/350x150" alt>#}
+{#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et facilis quibusdam sed veritatis. Ipsum, tempora.</p>#}
+{#                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et facilis quibusdam sed veritatis. Ipsum, tempora.</p>#}
+{#            </div>#}
+{#        </article>#}
+{#    </section>#}

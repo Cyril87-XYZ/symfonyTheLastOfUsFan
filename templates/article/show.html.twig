@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+    <h1>Article</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ article.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ article.title }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ article.content}}</td>
+            </tr>
+            <tr>
+                <th>Image</th>
+                <td>{{ article.image }}</td>
+            </tr>
+            <tr>
+                <th>Créer le</th>
+                <td>{{ article.createAt ? article.createAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Catégorie</th>
+                <td>{{ article.categorie.nom }}</td>
+            </tr>
+            <tr>
+                <th>Tag</th>
+                <td>
+                {% for tag in article.tags %}
+                    <h5  style="color: {{ tag.couleur }}">{{ tag.nom }}</h5>
+                {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('article_index') }}" class="btn btn-primary">Retour à la liste</a>
+
+    <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-primary"style="background-color: #8B6DF6; color: white; margin-bottom: 20px; margin-top: 20px">Modifier</a>
+
+    {{ include('article/_delete_form.html.twig') }}
+{% endblock %}

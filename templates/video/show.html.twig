@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Video{% endblock %}
+
+{% block body %}
+    <h1>Video</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ video.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ video.titre }}</td>
+            </tr>
+            <tr>
+                <th>Lien</th>
+                <td>{{ video.lien }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ video.description }}</td>
+            </tr>
+            <tr>
+                <th>Catégorie</th>
+                <td>{{ video.categorie.nom }}</td>
+            </tr>
+            <tr>
+                <th>Tag</th>
+                <td>
+                    {% for tag in video.tags %}
+                        <h5  style="color: {{ tag.couleur }}">{{ tag.nom }}</h5>
+                    {% endfor %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('video_index') }}"class="btn btn-primary">Retour à la liste des vidéos</a>
+
+    <a href="{{ path('video_edit', {'id': video.id}) }}"class="btn btn-primary" style="background-color: #8B6DF6; color: white; margin-bottom: 20px; margin-top: 20px">Modifier</a>
+
+    {{ include('video/_delete_form.html.twig') }}
+{% endblock %}

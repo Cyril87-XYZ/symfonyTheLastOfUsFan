@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Categorie index{% endblock %}
+
+{% block body %}
+    <h1>Categorie index</h1>
+
+    <table class="table">
+        <thead style="color: #8B6DF6">
+            <tr>
+                <th>Id</th>
+                <th>Nom de la catégorie</th>
+                <th>Numéro de la catégorie</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        {% for categorie in categories %}
+        <thead style="color: white">
+            <tr>
+                <td>{{ categorie.id }}</td>
+                <td>{{ categorie.nom }}</td>
+                <td>{{ categorie.numeroCategorie }}</td>
+                <td>
+                    <a href="{{ path('categorie_show', {'id': categorie.id}) }}">Voir</a>
+                    <a href="{{ path('categorie_edit', {'id': categorie.id}) }}">Editer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+            </thead>
+        {% endfor %}
+    </table>
+
+    <a href="{{ path('categorie_new') }}"  class="btn btn-primary">Créer une nouvelle catégorie</a>
+{% endblock %}

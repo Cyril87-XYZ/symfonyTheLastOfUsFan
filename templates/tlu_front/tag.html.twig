@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TLUFrontController!{% endblock %}
+
+{% block body %}
+    <section class="tag">
+        <h1 style="text-align: center">Liste des tags possibles</h1>
+        <p style="margin-bottom: 5%"></p>
+        <table class="table">
+            <thead style="color: #8B6DF6">
+                <tr>
+                    <th><h2>Code couleur : </h2></th>
+                </tr>
+            </thead>
+            <thead style="color: #8B6DF6">
+                <tr>
+                    <th><h5 style="color: blue; margin-left: 5%">Bleu = gentil</h5></th>
+                </tr>
+            </thead>
+            <thead style="color: #8B6DF6">
+                <tr>
+                     <td><h5 style="color: red; margin-left: 5%">Rouge = ennemies +++</h5></td>
+                </tr>
+            </thead>
+            <thead style="color: #8B6DF6">
+                <tr>
+                    <td><h5 style="color: yellow; margin-left: 5%">Jaune = ennemies</h5></td>
+                </tr>
+            </thead>
+            <thead style="color: #8B6DF6">
+                <tr>
+                    <td><h5 style="color: black; margin-left: 5%">Noir = Kill</h5></td>
+                </tr>
+             </thead>
+            <thead style="color: #8B6DF6">
+                <tr>
+                    <td><h5 style="color: green; margin-left: 5%">Vert = type de vidéo</h5></td>
+                </tr>
+            </thead>
+            <thead style="color: #8B6DF6">
+                <tr>
+                     <td><h5 style="color: violet; margin-left: 5%">Violet = A propos du jeu</h5></td>
+                </tr>
+            </thead>
+        </table>
+        <p style="margin-bottom: 5%"></p>
+        <table class="table">
+            <thead>
+            <tr>
+                 <th>Nom</th>
+                <th>Couleur</th>
+             </tr>
+            </thead>
+            {% for tag in tag %}
+                <thead style="color: #8B6DF6">
+                    <tr>
+                        <td style="color: {{ tag.couleur }}">{{ tag.nom }}</td>
+                        <td>{{ tag.couleur }}</td>
+                    </tr>
+                </thead>
+            {% endfor %}
+        </table>
+    </section>
+{% endblock %}
